@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EtudiantController;
 use App\Models\Log;
 use App\Models\Pere;
 use Illuminate\Support\Facades\Route;
@@ -21,7 +22,7 @@ Route::get('/salut', function () {
 
 Route::get('/acceuil', function () {
     return view('acceuil');
-})->name("acceuil");
+})->name("multiprise.view");
 
 Route::get('/produit', function () {
     return view('produit');
@@ -54,3 +55,5 @@ Route::get('rfid/{rfid}',function($rfid){
     return response()->json(json_encode($data), 200, ['Content-Type' => 'application/json;charset=UTF-8', 'Charset' => 'utf-8'],
     JSON_UNESCAPED_UNICODE);
 });
+
+Route::resource("etudiant",EtudiantController::class);
