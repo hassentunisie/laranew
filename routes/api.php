@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Log;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -26,4 +27,11 @@ Route::get("/logs",function(){
 
 Route::post("/addlogs",function(Request $request){
     Log::create($request->all());
+});
+
+Route::post("/incremente",function(Request $request){
+    $i=$request->i;
+    $data["i"]=$i+1;
+    return response()->json(json_encode($data), 200, ['Content-Type' => 'application/json;charset=UTF-8', 'Charset' => 'utf-8'],
+    JSON_UNESCAPED_UNICODE);
 });
